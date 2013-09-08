@@ -15,25 +15,35 @@ class CreditCard
     doubleds = []
     ints.each_with_index do | element, index |
       if index % 2 == 0
-        doubleds << element * 2
+        temp = element * 2
+        temp = temp.to_s.split('')
+        doubleds << temp
       else
         doubleds << element
       end
     end
 
-    
-    
+    print doubleds.flatten!
+    print "\n"
+
+    doubleds.map! { | element | element.to_i }
+
+    print doubleds
+    print "\n"
+
     sum = doubleds.reduce(:+)
     p sum
     print "\n"
     if sum % 10 == 0
       puts "Valid!"
+      return true
     else
       puts "No gud!"
+      return false
     end
   end
 
 end
 
-my_card = CreditCard.new(1111_1111_1111_1112)
-my_card.check_card
+# my_card = CreditCard.new(1111_1111_1111_1112)
+# my_card.check_card
