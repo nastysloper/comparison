@@ -12,7 +12,10 @@ describe Building do
     it 'tells you which building is taller' do
        sears_tower = Building.new("Sears", 1000)
        my_house = Building.new("My house", 30)
-       my_house.compare(sears_tower).should eq "Sears"
+       shack = Building.new("Cabin", 20)
+       # my_house.compare(sears_tower).should eq "Sears"
+       my_house.compare(sears_tower).should eq [my_house, sears_tower]
+       my_house.compare(shack).should eq [shack, my_house]
     end
   end
 
